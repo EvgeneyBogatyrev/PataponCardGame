@@ -4,7 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Patapon Card Game</title>
+<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <style>
+
   :root {
     color-scheme: dark;
     --page: #0b0a09; --surface: #141210; --surface-2: #1b1815;
@@ -14,29 +17,57 @@
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--page); color: var(--ink);
-    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
-  .wrap { max-width: 1060px; margin: 0 auto; padding: 40px 24px 56px; }
-  header { display: flex; align-items: center; gap: 20px; margin-bottom: 22px; }
-  header img.logo { width: 84px; height: 84px; object-fit: contain; }
-  header h1 { font-size: 27px; margin: 0; letter-spacing: -0.01em; }
-  .sub { color: var(--ink-2); font-size: 14px; margin-top: 4px; }
-  .sub .sep { color: var(--muted); margin: 0 6px; }
-  .desc { color: var(--ink-2); font-size: 15px; max-width: 640px; margin: 0 0 22px; }
-  .cta { display: flex; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
+    font: 16.5px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 36px 24px 56px; }
+  h2 { font-size: 23px; margin: 0 0 14px; }
   .btn { display: inline-block; text-decoration: none; border-radius: 8px; padding: 9px 18px;
-    font-size: 14px; border: 1px solid var(--ring); color: var(--ink); background: var(--surface);
+    font-size: 15px; border: 1px solid var(--ring); color: var(--ink); background: var(--surface);
     transition: border-color .12s, background .12s; }
   .btn:hover { border-color: var(--ring-2); background: var(--surface-2); }
   .btn.primary { background: var(--accent); border-color: var(--accent); color: #201207; font-weight: 600; }
   .btn.primary:hover { background: var(--accent-hi); border-color: var(--accent-hi); }
-  h2 { font-size: 19px; margin: 0 0 14px; }
-  .hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+
+  .hero { text-align: center; margin-bottom: 44px; }
+  .gamelogo img { max-width: 520px; width: 100%; height: auto; }
+  .hero .sub { color: var(--ink-2); font-size: 16px; margin-top: 4px; }
+  .hero .sub .sep { color: var(--muted); margin: 0 6px; }
+  .hero .desc { color: var(--ink-2); font-size: 17.5px; max-width: 620px; margin: 14px auto 20px; }
+  .cta { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .btn.withicon { display: inline-flex; align-items: center; gap: 8px; }
+  .btn.withicon img { height: 20px; width: 20px; border-radius: 5px; }
+  section { margin-bottom: 44px; }
+  .media { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 14px; }
+  .media > * { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; border: 1px solid var(--ring);
+    background: var(--surface); display: block; object-fit: cover; }
+  .media iframe { border: 1px solid var(--ring); }
+  .ytfacade { position: relative; overflow: hidden; cursor: pointer; }
+  .ytfacade img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .15s; }
+  .ytfacade:hover img { transform: scale(1.03); }
+  .ytplay { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 68px; height: 48px; background: rgba(11,10,9,.78); border: 1px solid var(--ring-2);
+    border-radius: 12px; transition: background .12s; }
+  .ytplay::after { content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-42%, -50%);
+    border-style: solid; border-width: 10px 0 10px 17px; border-color: transparent transparent transparent var(--ink); }
+  .ytfacade:hover .ytplay { background: var(--accent); border-color: var(--accent); }
+  .ytfacade:hover .ytplay::after { border-left-color: #201207; }
+  .hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
   .hub a { display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--ring);
     border-radius: 12px; padding: 18px 20px; transition: border-color .12s, transform .1s; }
   .hub a:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .hub .t { color: var(--ink); font-size: 16px; font-weight: 600; }
-  .hub .s { color: var(--muted); font-size: 13px; margin-top: 5px; }
-  .hub .go { color: var(--accent-hi); font-size: 13px; margin-top: 12px; }
+  .hub .t { color: var(--ink); font-size: 18px; font-weight: 600; }
+  .hub .s { color: var(--muted); font-size: 14.5px; margin-top: 5px; }
+  .hub .go { color: var(--accent-hi); font-size: 14.5px; margin-top: 12px; }
+  .patch { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px;
+    padding: 18px 22px; margin-bottom: 14px; }
+  .patch .phead { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+  .patch .pver { color: var(--accent-hi); font-weight: 700; font-size: 18px; }
+  .patch time { color: var(--muted); font-size: 14px; }
+  .patch h3 { margin: 0 0 10px; font-size: 21px; }
+  .patch p, .patch li { color: var(--ink-2); font-size: 16.5px; margin: 0 0 8px; }
+  .patch ul { margin: 0 0 8px; padding-left: 20px; }
+  .patch img { max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--ring); margin-top: 8px; }
+  .patch .pimgs { display: flex; gap: 10px; flex-wrap: wrap; }
+  .patch .pimgs img { flex: 1 1 260px; min-width: 0; max-width: calc(50% - 5px); }
 </style>
 </head>
 <body>
@@ -45,6 +76,7 @@
   <a href="collection.html">Collection</a>
   <a href="deck-builder.html">Deck builder</a>
   <a href="meta.html">Meta report</a>
+  <a href="about.html">About</a>
 </nav>
 <style>
 .pcg-sitenav{display:flex;gap:4px;align-items:center;padding:10px 24px;background:#0b0a09;
@@ -55,39 +87,159 @@ border-bottom:1px solid rgba(255,255,255,0.09);font:13.5px/1 system-ui,-apple-sy
 </style>
 <div class="wrap">
 
-  <header>
-    <img class="logo" src="data:image/webp;base64,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" alt="Patapon Card Game logo">
-    <div>
-      <h1>Patapon Card Game</h1>
-      <div class="sub">Free fan-made card game<span class="sep">&middot;</span>Windows<span class="sep">&middot;</span>Linux<span class="sep">&middot;</span>Android</div>
+  <!-- ============ GAME LOGO ============
+       The logo image lives at assets/logo.png — replace that file to change it
+       (transparent PNG looks best on the dark background). -->
+  <div class="hero">
+    <div class="gamelogo"><img src="assets/logo.png" alt="Patapon Card Game"></div>
+    <div class="sub">Free fan-made card game<span class="sep">&middot;</span>Windows<span class="sep">&middot;</span>Linux<span class="sep">&middot;</span>Android</div>
+    <p class="desc">A collectible card game inspired by the world of Patapon. Build a unique deck of units and spells, command your army across the battlefield, and destroy the opposing Hatapon before your own falls!</p>
+    <div class="cta">
+      <a class="btn primary" href="https://evgeney-bogatyrev.itch.io/patapon-card-game" target="_blank" rel="noopener">Play on itch.io</a>
+      <a class="btn withicon" href="https://discord.com/invite/DGMBweJbgm" target="_blank" rel="noopener"><img src="assets/patahell.png" alt="Pata Hell">Join our Discord</a>
     </div>
-  </header>
-
-  <p class="desc">A collectible card game inspired by the world of Patapon. Build a unique deck of units and spells, command your army across the battlefield, and destroy the opposing Hatapon before your own falls!</p>
-
-  <div class="cta">
-    <a class="btn primary" href="https://evgeney-bogatyrev.itch.io/patapon-card-game" target="_blank" rel="noopener">Play on itch.io</a>
-    <a class="btn" href="https://discord.com/invite/DGMBweJbgm" target="_blank" rel="noopener">Join our Discord</a>
   </div>
 
-  <h2>Content hub</h2>
-  <div class="hub">
-    <a href="collection.html">
-      <div class="t">Collection</div>
-      <div class="s">Every card in the game, searchable by name and rules text.</div>
-      <div class="go">Browse &rarr;</div>
-    </a>
-    <a href="deck-builder.html">
-      <div class="t">Deck builder</div>
-      <div class="s">Build a 24-card deck and export it as an image or text.</div>
-      <div class="go">Build &rarr;</div>
-    </a>
-    <a href="meta.html">
-      <div class="t">Meta report</div>
-      <div class="s">What players actually play online.</div>
-      <div class="go">Read &rarr;</div>
-    </a>
-  </div>
+  <section>
+    <div class="media">
+      <!-- Trailer: click-to-play. On the hosted site it swaps in the YouTube player;
+           opened from disk (file://) it opens YouTube in a new tab instead, because
+           YouTube embeds refuse to play without a referrer (error 153). -->
+      <a class="ytfacade" id="ytFacade" href="https://youtu.be/4Oso5e904nI" target="_blank" rel="noopener"
+         aria-label="Watch the Patapon Card Game trailer">
+        <img src="https://i.ytimg.com/vi/4Oso5e904nI/maxresdefault.jpg" alt="Patapon Card Game — trailer"
+             onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://i.ytimg.com/vi/4Oso5e904nI/hqdefault.jpg'}else{this.style.display='none'}">
+        <span class="ytplay"></span>
+      </a>
+      <img src="assets/gameplay.webp" alt="Patapon Card Game — a match in progress">
+    </div>
+  </section>
+  <script>
+  document.getElementById("ytFacade").addEventListener("click", function (e) {
+    if (location.protocol === "file:") return; // no referrer possible from disk -> let the link open YouTube
+    e.preventDefault();
+    var f = document.createElement("iframe");
+    f.src = "https://www.youtube.com/embed/4Oso5e904nI?autoplay=1";
+    f.title = "Patapon Card Game — trailer";
+    f.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+    f.setAttribute("allowfullscreen", "");
+    f.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+    this.replaceWith(f);
+  });
+  </script>
+
+  <section>
+    <h2>Content hub</h2>
+    <div class="hub">
+      <a href="collection.html">
+        <div class="t">Collection</div>
+        <div class="s">Every card in the game, searchable by name and rules text.</div>
+        <div class="go">Browse &rarr;</div>
+      </a>
+      <a href="deck-builder.html">
+        <div class="t">Deck builder</div>
+        <div class="s">Build a 24-card deck and export it as an image or text.</div>
+        <div class="go">Build &rarr;</div>
+      </a>
+      <a href="meta.html">
+        <div class="t">Meta report</div>
+        <div class="s">What players actually play online.</div>
+        <div class="go">Read &rarr;</div>
+      </a>
+      <a href="about.html">
+        <div class="t">About</div>
+        <div class="s">The project, the people, the links.</div>
+        <div class="go">More &rarr;</div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Patch notes</h2>
+
+    <!-- ============ HOW TO ADD A PATCH NOTE ============
+         1. Copy the whole <article class="patch"> ... </article> block below.
+         2. Paste it right UNDER this comment, so the newest entry is on top.
+         3. Edit the version, date, title and text (plain <p> paragraphs and <ul><li> lists both work).
+         4. Images: drop a screenshot into the assets/ folder and reference it like
+              <img src="assets/my-screenshot.png" alt="">
+            For two images side by side, wrap them:
+              <div class="pimgs"><img src="assets/a.png" alt=""><img src="assets/b.png" alt=""></div>
+            No image needed? Just delete the <img> line. -->
+
+    <article class="patch">
+      <div class="phead"><span class="pver">v1.0.6</span><time>19 August 2026</time></div>
+      <h2>Visual Updates, Bug Fixes, and Card Rebalance</h2>
+      <p>This update makes several changes to problematic cards, fixes various bugs, and improves the game's visuals.</p>
+      <h3>Balance Changes</h3>
+      <ul>
+        <li><div><h4>Oharan</h4>
+        This card used to make games unfun by allowing players to kill their opponent as early as turn 3. It now prevents attacks on the enemy Hatapon and forces the strongest unit on each side of the board to clash, making the card more thematic.
+        <br><img src="assets/Oharan_nerf.png" alt="Oharan">
+        </div></li>
+        <li><div><h4>Ban Tatepon</h4>
+        Ban Tatepon's condition was designed to be a challenge that players must overcome. However, many units with <b>Pacifism</b> start with 8 or more power, allowing this card to become active on turn 2. Ban now requires a unit with 10 or more power, slowing it down.
+        <br><img src="assets/Ban_nerf.png" alt="Ban Tatepon">
+        </div></li>
+        <li><div><h4>Treant</h4>
+        Treant is the only unit with 10 power that can enter the board on turn 1. We reduced its power by one to prevent it from activating Ban Tatepon.
+        <br><img src="assets/Treant_nerf.png" alt="Treant">
+        </div></li>
+        <li><div><h4>Megaton</h4>
+        Megaton played on the first turn can become a nightmare if left unanswered. It now damages its controller by 3 instead of 2, making it less oppressive.
+        <br><img src="assets/Megaton_nerf.png" alt="Megaton">
+        </div></li>
+        <li><div><h4>Rantan</h4>
+        Rantan is one of the most popular cards in the game. Healing for 6 in the late game is too powerful, so we reduced the amount to 4. This makes the card less oppressive and more balanced.
+        <br><img src="assets/Rantan_nerf.png" alt="Rantan">
+        </div></li>
+        <li><div><h4>Pan Pakapon</h4>
+        Pan Pakapon is not very strong on its own, but it is part of a two-card combo with Don Yumipon that can win the game on the spot. This combination has its trade-offs, leaving you with no cards in your library once it is complete, but it also limits future design space. We decided to nerf Pan Pakapon to make this combo deck less consistent.
+        <br><img src="assets/Pan_nerf.png" alt="Pan Pakapon">
+        </div></li>
+        <li><div><h4>Aiton</h4>
+        Aiton is a card with a lot of potential, but it is currently too weak to see play. We increased its power to 2 to make it more viable.
+        <br><img src="assets/Aiton_buff.png" alt="Aiton">
+        </div></li>
+        <li><div><h4>Earthquake</h4>
+        Earthquake is another interesting card that sees almost no play. We increased its damage to 3 to make it more viable. It is now better than Fang, but requires two points of Shield devotion.
+        <br><img src="assets/Earthquake_buff.png" alt="Eathquake">
+        </div></li>
+        <li><div><h4>Nova Nova</h4>
+        We nerfed Nova Nova in the previous patch, but that change was too harsh. At its current power level, we believe it is appropriate to make it a two-devotion card.
+        <br><img src="assets/Nova_buff.png" alt="Nova Nova">
+        </div></li>
+    </ul>
+
+    <h3>Visual Updates</h3>
+      <ul>
+        <li>The main menu UI has received a massive update. Be sure to check it out!
+            <br><img src="assets/main_menu_update.png" alt="New menu UI">
+        </li>
+        <li>The game board has been updated with a new design.
+             <br><img src="assets/gameplay.webp" alt="New board design"> 
+        </li>
+        <li>Updated the artwork for Deadly Dispute and Megaton.</li>
+      </ul>
+
+    <h3>Collection Updates</h3>
+      <ul>
+        <li>The collection now has a search bar to help you find cards faster.</li>
+        <li>You can now buy and sell cards through our bot directly from the collection screen.</li>
+        <li>To encourage players to play online, we increased the rewards for winning an online match against a real player.</li>
+      </ul>
+
+      <h3>Bug Fixes</h3>
+      <ul>
+        <li>Pyokorider and Gong no longer freeze the game.</li>
+        <li>Gan Yaripon now remembers its effects in the correct order.</li>
+        <li>Myamsar destroying Wep with its On Attack effect no longer causes Wep's controller to draw an additional card.</li>
+        <li>Treant on Fire, Bird Form, and Kiba Form now have the same devotion as their original cards.</li>
+      </ul>
+      
+    </article>
+
+  </section>
 
 </div>
 </body>
