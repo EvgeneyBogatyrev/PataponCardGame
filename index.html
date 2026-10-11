@@ -61,6 +61,10 @@
     padding: 18px 22px; margin-bottom: 14px; }
   .patch .phead { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
   .patch .pver { color: var(--accent-hi); font-weight: 700; font-size: 18px; }
+  .patch .postkind { display: inline-flex; align-items: center; min-height: 25px; padding: 2px 9px;
+    border: 1px solid var(--ring-2); border-radius: 999px; color: var(--ink-2); font-size: 12px;
+    font-weight: 750; letter-spacing: .05em; text-transform: uppercase; }
+  .patch .postkind.draft { color: #201207; border-color: #f4a259; background: #f4a259; }
   .patch time { color: var(--muted); font-size: 14px; }
   .patch h3 { margin: 0 0 10px; font-size: 21px; }
   .patch p, .patch li { color: var(--ink-2); font-size: 16.5px; margin: 0 0 8px; }
@@ -68,6 +72,74 @@
   .patch img { max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--ring); margin-top: 8px; }
   .patch .pimgs { display: flex; gap: 10px; flex-wrap: wrap; }
   .patch .pimgs img { flex: 1 1 260px; min-width: 0; max-width: calc(50% - 5px); }
+  .news-lead { max-width: 920px; font-size: 18px !important; }
+  .nowrap { white-space: nowrap; }
+  .card-showcase { display: grid; grid-template-columns: repeat(3, minmax(220px, 1fr));
+    gap: 16px; margin: 18px 0 30px; }
+  .card-showcase figure, .story-cards figure, .ability-showcase figure { min-width: 0; margin: 0;
+    padding: 14px 12px 11px; text-align: center; background: #0f0d0b;
+    border: 1px solid var(--ring); border-radius: 12px; }
+  .card-showcase img, .story-cards img, .ability-showcase img { display: block; width: 100%;
+    max-height: 520px; object-fit: contain; margin: 0 auto; border: 0; border-radius: 0; }
+  .card-showcase figcaption, .story-cards figcaption, .ability-showcase figcaption {
+    color: var(--ink-2); font-size: 14px; margin-top: 8px; }
+  .story-path { display: grid; gap: 22px; margin: 18px 0 32px; }
+  .story-beat { min-width: 0; padding: 18px; border-radius: 14px;
+    border: 1px solid var(--ring); background: linear-gradient(120deg, #0f0d0b, #17110d); }
+  .story-beat h4 { margin: 0 0 5px; color: var(--ink); font-size: 20px; }
+  .story-beat > p { max-width: 760px; margin-bottom: 14px; }
+  .story-cards { display: grid; grid-template-columns: repeat(2, minmax(220px, 310px));
+    justify-content: center; gap: 14px; }
+  .story-cards figure:last-child:nth-child(odd) { grid-column: 1 / -1; width: min(100%, 286px);
+    justify-self: center; }
+  .story-cards.three-card-row { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 930px;
+    margin: 0 auto; }
+  .story-cards.three-card-row figure:last-child:nth-child(odd) { grid-column: auto; width: auto; }
+  .boss-feature { display: grid; grid-template-columns: minmax(250px, 360px) 1fr; align-items: center;
+    gap: 24px; margin: 16px 0 24px; padding: 18px; border: 1px solid var(--ring);
+    border-radius: 14px; background: #0f0d0b; }
+  .boss-feature img { display: block; width: 100%; max-height: 530px; object-fit: contain;
+    margin: 0; border: 0; border-radius: 0; }
+  .boss-feature h4 { margin: 0 0 8px; color: var(--ink); font-size: 24px; }
+  .boss-feature p { margin: 0; }
+  .ability-intro { margin-top: -4px !important; text-align: center; }
+  .ability-showcase { display: grid; grid-template-columns: repeat(3, minmax(210px, 1fr));
+    gap: 14px; margin: 14px 0 30px; }
+  .pass-feature { display: grid; grid-template-columns: minmax(240px, 340px) 1fr; align-items: center;
+    gap: 22px; margin-top: 14px; padding: 18px 22px 18px 10px; border: 1px solid rgba(244,162,89,.35);
+    border-radius: 14px; background: linear-gradient(120deg, rgba(232,118,44,.13), rgba(244,162,89,.03)); }
+  .pass-feature img { display: block; width: 100%; max-height: 520px; object-fit: contain;
+    margin: 0; border: 0; border-radius: 0; }
+  .pass-feature p { margin-bottom: 8px; }
+  .pass-feature .pass-price { color: var(--accent-hi); font-size: 19px; font-weight: 750; }
+  .launch-date { margin: 18px 0 0 !important; color: var(--ink) !important; text-align: center; }
+  .launch-trailer { display: grid; place-items: center; min-height: 210px; margin-top: 14px;
+    padding: 28px; text-align: center; border: 1px solid var(--ring); border-radius: 14px;
+    background: radial-gradient(circle at center, rgba(232,118,44,.14), #0f0d0b 68%); }
+  .launch-trailer .play-mark { display: grid; place-items: center; width: 64px; height: 48px;
+    margin: 0 auto 14px; border-radius: 12px; color: #201207; background: var(--accent-hi);
+    font-size: 24px; line-height: 1; }
+  .launch-trailer strong { display: block; color: var(--ink); font-size: 20px; }
+  .launch-trailer p { margin: 7px 0 0; }
+  .news-trailer { display: block; position: relative; width: 100%; aspect-ratio: 16 / 9;
+    max-height: 540px; margin: 14px 0 26px; overflow: hidden; border: 1px solid var(--ring);
+    border-radius: 14px; background: #0f0d0b; }
+  .news-trailer > img { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
+    border: 0; border-radius: 0; object-fit: cover; transition: transform .18s, filter .18s; }
+  .news-trailer:hover > img { transform: scale(1.025); filter: brightness(.8); }
+  .news-trailer .news-trailer-label { position: absolute; left: 50%; bottom: 24px;
+    transform: translateX(-50%); width: max-content; max-width: calc(100% - 36px);
+    padding: 7px 14px; border-radius: 999px; color: #201207; background: var(--accent-hi);
+    font-size: 16px; font-weight: 750; text-align: center; }
+  @media (max-width: 780px) {
+    .card-showcase, .ability-showcase { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .boss-feature, .pass-feature { grid-template-columns: 1fr; padding: 14px; }
+    .boss-feature img, .pass-feature img { max-width: 330px; margin: 0 auto; }
+  }
+  @media (max-width: 560px) {
+    .card-showcase, .story-cards, .ability-showcase { grid-template-columns: 1fr; }
+    .story-cards figure:last-child:nth-child(odd) { grid-column: auto; width: auto; }
+  }
 </style>
 </head>
 <body>
@@ -106,6 +178,7 @@ border-bottom:1px solid rgba(255,255,255,0.09);font:13.5px/1 system-ui,-apple-sy
            opened from disk (file://) it opens YouTube in a new tab instead, because
            YouTube embeds refuse to play without a referrer (error 153). -->
       <a class="ytfacade" id="ytFacade" href="https://youtu.be/4Oso5e904nI" target="_blank" rel="noopener"
+         data-youtube-id="4Oso5e904nI"
          aria-label="Watch the Patapon Card Game trailer">
         <img src="https://i.ytimg.com/vi/4Oso5e904nI/maxresdefault.jpg" alt="Patapon Card Game — trailer"
              onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://i.ytimg.com/vi/4Oso5e904nI/hqdefault.jpg'}else{this.style.display='none'}">
@@ -115,16 +188,19 @@ border-bottom:1px solid rgba(255,255,255,0.09);font:13.5px/1 system-ui,-apple-sy
     </div>
   </section>
   <script>
-  document.getElementById("ytFacade").addEventListener("click", function (e) {
+  document.addEventListener("click", function (e) {
+    var facade = e.target.closest(".ytfacade[data-youtube-id]");
+    if (!facade) return;
     if (location.protocol === "file:") return; // no referrer possible from disk -> let the link open YouTube
     e.preventDefault();
     var f = document.createElement("iframe");
-    f.src = "https://www.youtube.com/embed/4Oso5e904nI?autoplay=1";
-    f.title = "Patapon Card Game — trailer";
+    f.src = "https://www.youtube.com/embed/" + facade.dataset.youtubeId + "?autoplay=1";
+    f.title = facade.getAttribute("aria-label") || "Patapon Card Game trailer";
+    if (facade.classList.contains("news-trailer")) f.className = "news-trailer";
     f.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
     f.setAttribute("allowfullscreen", "");
     f.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
-    this.replaceWith(f);
+    facade.replaceWith(f);
   });
   </script>
 
@@ -154,13 +230,13 @@ border-bottom:1px solid rgba(255,255,255,0.09);font:13.5px/1 system-ui,-apple-sy
     </div>
   </section>
 
-  <section>
-    <h2>Patch notes</h2>
+  <section id="news">
+    <h2>News</h2>
 
-    <!-- ============ HOW TO ADD A PATCH NOTE ============
-         1. Copy the whole <article class="patch"> ... </article> block below.
+    <!-- ============ HOW TO ADD A NEWS POST ============
+         1. Copy a whole <article class="patch"> ... </article> block below.
          2. Paste it right UNDER this comment, so the newest entry is on top.
-         3. Edit the version, date, title and text (plain <p> paragraphs and <ul><li> lists both work).
+         3. Edit the category, date, title and text (plain <p> paragraphs and <ul><li> lists both work).
          4. Images: drop a screenshot into the assets/ folder and reference it like
               <img src="assets/my-screenshot.png" alt="">
             For two images side by side, wrap them:
@@ -168,7 +244,102 @@ border-bottom:1px solid rgba(255,255,255,0.09);font:13.5px/1 system-ui,-apple-sy
             No image needed? Just delete the <img> line. -->
 
     <article class="patch">
-      <div class="phead"><span class="pver">v1.0.6</span><time>19 August 2026</time></div>
+      <div class="phead"><span class="postkind">Expansion announcement · v1.1.0</span><time>9 October 2026</time></div>
+      <h3>Welcome to Zigoton Palace!</h3>
+      <a class="news-trailer ytfacade" href="https://youtu.be/Gw8ePR1K260" target="_blank" rel="noopener"
+         data-youtube-id="Gw8ePR1K260"
+         aria-label="Watch the Zigoton Palace launch trailer on YouTube">
+        <img src="https://i.ytimg.com/vi/Gw8ePR1K260/maxresdefault.jpg" alt="Zigoton Palace launch trailer"
+             onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://i.ytimg.com/vi/Gw8ePR1K260/hqdefault.jpg'}else{this.style.display='none'}">
+        <span class="ytplay" aria-hidden="true"></span>
+        <span class="news-trailer-label">Watch the launch trailer</span>
+      </a>
+      <img class="news-hero" src="assets/news/ZigotonPalaceExpansion.png" alt="Patapon Card Game: Zigoton Palace expansion">
+      <p class="news-lead">The gates are opening on a new chapter of Patapon Card Game. <strong>Zigoton Palace</strong> adds <span class="nowrap">26 collectible</span> cards, a new unit type, memorable generals, and towering bosses with their own ways to reshape a match.</p>
+
+      <h3>Meet the Zigotons</h3>
+      <p><strong>Zigoton</strong> is a new unit type built around formation pressure, mutual support, and disrupting the enemy line. Build around generals such as Beetleton and Scorpiton, then use Zigoton Palace to recruit another random Zigoton or strengthen every Zigoton already under your control.</p>
+      <div class="card-showcase">
+        <figure><img src="assets/news/Beetleton.webp" alt="Beetleton card"><figcaption>Beetleton</figcaption></figure>
+        <figure><img src="assets/news/Scorpiton.webp" alt="Scorpiton card"><figcaption>Scorpiton</figcaption></figure>
+        <figure><img src="assets/news/ZigotonPalace.webp" alt="Zigoton Palace card"><figcaption>Zigoton Palace</figcaption></figure>
+      </div>
+
+      <h3>Follow the generals' story</h3>
+      <p>Fight your way through Zigoton territory one defensive line at a time. Every encounter introduces the characters and weapons standing between your army and the palace.</p>
+      <div class="story-path">
+        <section class="story-beat">
+          <h4>Take down Bachikoi Fort</h4>
+          <p>Breach the fortress, then face the Dekaton and Yumiton guarding it.</p>
+          <div class="story-cards three-card-row">
+            <figure><img src="assets/news/DekatonWindmill.webp" alt="Bachikoi Fort card"><figcaption>Bachikoi Fort</figcaption></figure>
+            <figure><img src="assets/news/Dekaton.webp" alt="Dekaton card"><figcaption>Dekaton</figcaption></figure>
+            <figure><img src="assets/news/Yumiton.webp" alt="Yumiton card"><figcaption>Yumiton</figcaption></figure>
+          </div>
+        </section>
+        <section class="story-beat">
+          <h4>Defeat Spiderton and Ziggerzank</h4>
+          <p>Overcome their combined assault before Spiderton’s charge and Ziggerzank’s ranged fire wear down your Hatapon.</p>
+          <div class="story-cards">
+            <figure><img src="assets/news/Spiderton.webp" alt="Spiderton card"><figcaption>Spiderton</figcaption></figure>
+            <figure><img src="assets/news/Ziggerzank.webp" alt="Ziggerzank card"><figcaption>Ziggerzank</figcaption></figure>
+          </div>
+        </section>
+        <section class="story-beat">
+          <h4>Survive an encounter with Lord Baban</h4>
+          <p>Baban protects a chosen Zigoton from death while Scorpiton keeps returning to the fight.</p>
+          <div class="story-cards">
+            <figure><img src="assets/news/LordBaban.webp" alt="Lord Baban card"><figcaption>Lord Baban</figcaption></figure>
+            <figure><img src="assets/news/Scorpiton.webp" alt="Scorpiton card"><figcaption>Scorpiton</figcaption></figure>
+          </div>
+        </section>
+        <section class="story-beat">
+          <h4>Break the last line of defence</h4>
+          <p>Beetleton knocks enemies back to hand while Kharma's Aid keeps the palace defenders fighting.</p>
+          <div class="story-cards">
+            <figure><img src="assets/news/Beetleton.webp" alt="Beetleton card"><figcaption>Beetleton</figcaption></figure>
+            <figure><img src="assets/news/KharmasAid.webp" alt="Kharma's Aid card"><figcaption>Kharma's Aid</figcaption></figure>
+          </div>
+        </section>
+      </div>
+
+      <h3>Face the bosses</h3>
+      <section class="boss-feature">
+        <img src="assets/news/Shookle.webp" alt="Shookle card">
+        <div>
+          <h4>Shookle</h4>
+          <p>Shookle drags exactly three non-Hatapon units into its grasp and devours them. The stolen units return to their owner's hand only when Shookle is finally destroyed.</p>
+        </div>
+      </section>
+
+      <section class="boss-feature">
+        <img src="assets/news/Gorl.webp" alt="Gorl card">
+        <div>
+          <h4>Gorl</h4>
+          <p>Reshape the game with the servant of darkness himself! Each turn, Gorl replaces your hand with three abilities, and once he is dead, you lose the round!</p>
+        </div>
+      </section>
+      <p class="ability-intro">Command Gorl through all three of his ability cards:</p>
+      <div class="ability-showcase">
+        <figure><img src="assets/news/GorlBlast.webp" alt="Dark Fireball card"><figcaption>Dark Fireball</figcaption></figure>
+        <figure><img src="assets/news/GorlGrab.webp" alt="Lightning Sacrifice card"><figcaption>Lightning Sacrifice</figcaption></figure>
+        <figure><img src="assets/news/TheBeastForm.webp" alt="Beast Transform card"><figcaption>Beast Transform</figcaption></figure>
+      </div>
+
+      <h3 id="zigoton-pass">The Zigoton Pass</h3>
+      <div class="pass-feature">
+        <img src="assets/news/ZigotonPalace.webp" alt="Zigoton Palace card">
+        <div>
+          <p>The Zigoton Pass is the fastest way into the expansion. It includes a <strong>Promo Zigoton Palace</strong> card and <strong>20 expansion chests</strong>; those chests contain cards only from the 26-card Zigoton Palace set.</p>
+          <p class="pass-price">22,500 Ka-Ching</p>
+          <p>Open all 21 rewards together, start building around the Zigoton unit type, and take your place inside the palace.</p>
+        </div>
+      </div>
+      <p class="launch-date"><strong>Zigoton Palace will launch on 16 October 2026.</strong></p>
+    </article>
+
+    <article class="patch" id="patch-1-0-6">
+      <div class="phead"><span class="postkind">Patch notes</span><span class="pver">v1.0.6</span><time>19 August 2026</time></div>
       <h2>Visual Updates, Bug Fixes, and Card Rebalance</h2>
       <p>This update makes several changes to problematic cards, fixes various bugs, and improves the game's visuals.</p>
       <h3>Balance Changes</h3>
