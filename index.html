@@ -83,6 +83,26 @@
     max-height: 520px; object-fit: contain; margin: 0 auto; border: 0; border-radius: 0; }
   .card-showcase figcaption, .story-cards figcaption, .ability-showcase figcaption {
     color: var(--ink-2); font-size: 14px; margin-top: 8px; }
+.balance-comparison { display: grid; gap: 18px; margin: 18px 0 30px; }
+.balance-change { margin: 0; padding: 16px; border: 1px solid var(--ring); border-radius: 12px;
+  background: #0f0d0b; }
+.balance-change h4 { margin: 0 0 4px; color: var(--ink); font-size: 19px; }
+.balance-change > p { margin-bottom: 14px; }
+.balance-card-pair { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center; gap: 14px; max-width: 720px; margin: 0 auto; }
+.balance-card-pair figure { min-width: 0; margin: 0; padding: 12px 10px 9px;
+  text-align: center; border: 1px solid var(--ring); border-radius: 10px; background: #0b0a09; }
+.balance-card-pair img { display: block; width: 100%; max-height: 500px; object-fit: contain;
+  margin: 0 auto; border: 0; border-radius: 0; }
+.balance-card-pair figcaption { margin-top: 7px; color: var(--muted); font-size: 13px;
+  font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.balance-card-pair figure.change-new.buff {
+  border-color: #52d273; box-shadow: 0 0 0 2px rgba(82,210,115,.72), 0 0 18px rgba(82,210,115,.2); }
+.balance-card-pair figure.change-new.nerf {
+  border-color: #ed5c5c; box-shadow: 0 0 0 2px rgba(237,92,92,.72), 0 0 18px rgba(237,92,92,.2); }
+.balance-card-pair figure.change-new.buff img { filter: drop-shadow(0 0 4px rgba(82,210,115,.45)); }
+.balance-card-pair figure.change-new.nerf img { filter: drop-shadow(0 0 4px rgba(237,92,92,.45)); }
+.balance-arrow { color: var(--accent-hi); font-size: 34px; font-weight: 700; }
   .story-path { display: grid; gap: 22px; margin: 18px 0 32px; }
   .story-beat { min-width: 0; padding: 18px; border-radius: 14px;
     border: 1px solid var(--ring); background: linear-gradient(120deg, #0f0d0b, #17110d); }
@@ -138,6 +158,8 @@
   }
   @media (max-width: 560px) {
     .card-showcase, .story-cards, .ability-showcase { grid-template-columns: 1fr; }
+.balance-card-pair { grid-template-columns: 1fr; }
+.balance-arrow { transform: rotate(90deg); justify-self: center; line-height: 1; }
     .story-cards figure:last-child:nth-child(odd) { grid-column: auto; width: auto; }
   }
 </style>
@@ -242,8 +264,62 @@ border-bottom:1px solid rgba(255,255,255,0.09);font:13.5px/1 system-ui,-apple-sy
             For two images side by side, wrap them:
               <div class="pimgs"><img src="assets/a.png" alt=""><img src="assets/b.png" alt=""></div>
             No image needed? Just delete the <img> line. -->
+<article class="patch" id="patch-1-1-1">
+  <div class="phead"><span class="postkind">Patch notes</span><span class="pver">v1.1.1</span><time>11 November 2026</time></div>
+  <h3>Balance Changes and Better Match Rewards</h3>
+  <p>This update adjusts several cards, makes match rewards more consistent, and fixes an interaction between <i>Turn to Stone</i> and <i>Lord Baban</i>.</p>
 
-    <article class="patch">
+  <h3>Card changes</h3>
+  <div class="balance-comparison">
+    <section class="balance-change">
+      <h4>Spiderton</h4><p>Power reduced from 3 to 2.<br>Spiderton proved too powerful because it removes an opposing unit while adding Ziggerzank to its controller's hand. Ziggerzank is a strong follow-up unit whose <i>On Death</i> drawback rarely matters.</p>
+      <div class="balance-card-pair"><figure><img src="assets/news/balance/Spiderton-old.webp" alt="Old Spiderton card"><figcaption>Before</figcaption></figure><span class="balance-arrow" aria-hidden="true">&rarr;</span><figure class="change-new nerf"><img src="assets/news/balance/Spiderton-new.webp" alt="New Spiderton card"><figcaption>After</figcaption></figure></div>
+    </section>
+    <section class="balance-change">
+      <h4>Ziggerzank</h4><p>Power reduced from 5 to 4.<br>As noted above, Ziggerzank has also been a powerful finisher. We reduced its power to 4 and will continue monitoring its <i>End of turn</i> effect.</p>
+      <div class="balance-card-pair"><figure><img src="assets/news/balance/Ziggerzank-old.webp" alt="Old Ziggerzank card"><figcaption>Before</figcaption></figure><span class="balance-arrow" aria-hidden="true">&rarr;</span><figure class="change-new nerf"><img src="assets/news/balance/Ziggerzank-new.webp" alt="New Ziggerzank card"><figcaption>After</figcaption></figure></div>
+    </section>
+    <section class="balance-change">
+      <h4>Yumipon</h4><p>Devotion to Bow increased from 1 to 2.<br>Yumipon is the second-most-played card in the game and has become an automatic inclusion in nearly every deck with Devotion to Bow. We increased its Devotion requirement to make including it a more meaningful deck-building choice.</p>
+      <div class="balance-card-pair"><figure><img src="assets/news/balance/Yumipon-old.webp" alt="Old Yumipon card"><figcaption>Before</figcaption></figure><span class="balance-arrow" aria-hidden="true">&rarr;</span><figure class="change-new nerf"><img src="assets/news/balance/Yumipon-new.webp" alt="New Yumipon card"><figcaption>After</figcaption></figure></div>
+    </section>
+    <section class="balance-change">
+      <h4>Rantan</h4><p>Devotion to Bow increased from 1 to 2.<br>Rantan has the same issue as Yumipon: it appears in almost every Bow deck. Reducing its healing was not enough because <b>Cycling</b> remains its greatest strength, so we increased its Devotion requirement to limit which decks can include it.</p>
+      <div class="balance-card-pair"><figure><img src="assets/news/balance/Rantan-old.webp" alt="Old Rantan card"><figcaption>Before</figcaption></figure><span class="balance-arrow" aria-hidden="true">&rarr;</span><figure class="change-new nerf"><img src="assets/news/balance/Rantan-new.webp" alt="New Rantan card"><figcaption>After</figcaption></figure></div>
+    </section>
+    <section class="balance-change">
+      <h4>Pan the Pakapon</h4><p>Now gives <b>Cycling</b> to every card in your hand, rather than only to spells.<br>The previous nerf made Pan the Pakapon too weak, so we are reverting it. We are aware of the potential three-card combo involving Hinoki, Don Yumipon, and Pan the Pakapon, and we will monitor it closely.</p>
+      <div class="balance-card-pair"><figure><img src="assets/news/balance/PanThePakapon-old.webp" alt="Old Pan the Pakapon card"><figcaption>Before</figcaption></figure><span class="balance-arrow" aria-hidden="true">&rarr;</span><figure class="change-new buff"><img src="assets/news/balance/PanThePakapon-new.webp" alt="New Pan the Pakapon card"><figcaption>After</figcaption></figure></div>
+    </section>
+    <section class="balance-change">
+      <h4>Alosson</h4><p>Devotion to Bow reduced from 2 to 1.<br>With Yumipon now requiring 2 Devotion to Bow, Alosson becomes an accessible alternative for decks with only 1 Devotion to Bow.</p>
+      <div class="balance-card-pair"><figure><img src="assets/news/balance/Alosson-old.webp" alt="Old Alosson card"><figcaption>Before</figcaption></figure><span class="balance-arrow" aria-hidden="true">&rarr;</span><figure class="change-new buff"><img src="assets/news/balance/Alosson-new.webp" alt="New Alosson card"><figcaption>After</figcaption></figure></div>
+    </section>
+    <section class="balance-change">
+      <h4>Megaton</h4><p>Devotion to Bow reduced from 2 to 1.<br>Megaton's life cost already keeps its card draw in check. Requiring 2 Devotion made it too difficult to include outside dedicated Bow decks, so it is returning to 1 Devotion.</p>
+      <div class="balance-card-pair"><figure><img src="assets/news/balance/Megaton-old.webp" alt="Old Megaton card"><figcaption>Before</figcaption></figure><span class="balance-arrow" aria-hidden="true">&rarr;</span><figure class="change-new buff"><img src="assets/news/balance/Megaton-new.webp" alt="New Megaton card"><figcaption>After</figcaption></figure></div>
+    </section>
+    <section class="balance-change">
+      <h4>Bachikoi Fort</h4><p>Its second ability now costs 2 power instead of 1.<br>By adding a Yumiton that can be cycled, Bachikoi Fort's second ability effectively lets players draw a card every turn for only 1 power. We increased the cost so repeated use carries a more meaningful price.</p>
+      <div class="balance-card-pair"><figure><img src="assets/news/balance/DekatonWindmill-old.webp" alt="Old Bachikoi Fort card"><figcaption>Before</figcaption></figure><span class="balance-arrow" aria-hidden="true">&rarr;</span><figure class="change-new nerf"><img src="assets/news/balance/DekatonWindmill-new.webp" alt="New Bachikoi Fort card"><figcaption>After</figcaption></figure></div>
+    </section>
+  </div>
+
+  <h3>Rules fix</h3>
+  <p><i>Turn to Stone</i> now fully cancels Lord Baban's protection whether it targets Lord Baban or the Zigoton he selected. A protected Zigoton that has been turned to stone will no longer return to its controller's hand when it dies.</p>
+
+  <h3>Rewards and economy</h3>
+  <ul>
+    <li>Win against a bot in Play Online mode: <strong>2 chests</strong>.</li>
+    <li>Loss against a bot in Play Online mode: <strong>0 chests</strong>.</li>
+    <li>Win against a real player, in Play Online or a friendly battle: <strong>3 chests</strong>.</li>
+    <li>Loss against a real player, in Play Online or a friendly battle: <strong>1 chest</strong>.</li>
+    <li>The Zigoton Pass price is reduced from 22,500 to <strong>15,000 Ka-Ching</strong>.</li>
+    <li>Armory trade spread improved from 1:2 to <strong>2:3</strong>, so selling cards now returns a larger share of their purchase price.</li>
+  </ul>
+</article>
+
+<article class="patch">
       <div class="phead"><span class="postkind">Expansion announcement · v1.1.0</span><time>9 October 2026</time></div>
       <h3>Welcome to Zigoton Palace!</h3>
       <a class="news-trailer ytfacade" href="https://youtu.be/Gw8ePR1K260" target="_blank" rel="noopener"
@@ -331,7 +407,7 @@ border-bottom:1px solid rgba(255,255,255,0.09);font:13.5px/1 system-ui,-apple-sy
         <img src="assets/news/ZigotonPalace.webp" alt="Zigoton Palace card">
         <div>
           <p>The Zigoton Pass is the fastest way into the expansion. It includes a <strong>Promo Zigoton Palace</strong> card and <strong>20 expansion chests</strong>; those chests contain cards only from the 26-card Zigoton Palace set.</p>
-          <p class="pass-price">22,500 Ka-Ching</p>
+          <p class="pass-price">15,000 Ka-Ching</p>
           <p>Open all 21 rewards together, start building around the Zigoton unit type, and take your place inside the palace.</p>
         </div>
       </div>
